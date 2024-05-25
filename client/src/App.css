@@ -1,0 +1,9 @@
+.navbar-red .nav-link,
+.navbar-red .navbar-brand {
+  color: white !important;
+}
+
+.navbar-red .nav-link:hover,
+.navbar-red .navbar-brand:hover {
+  color: lightgray !important; /* Cor ao passar o mouse (opcional) */
+}
