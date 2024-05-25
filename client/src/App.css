@@ -1,3 +1,7 @@
+.App{
+  background-color: #ddd;
+}
+
 .navbar-red .nav-link,
 .navbar-red .navbar-brand {
   color: white !important;
