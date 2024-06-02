@@ -1,8 +1,9 @@
-// components/PizzaCarousel.js
-import React from "react";
+import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
+import PizzaModal from "../PizzaModal/PizzaModal";
+import '../../css/custom-buttom.css';
 
-const Card = ({ imageSrc, text, buttonText, altura, largura }) => (
+const Card = ({ imageSrc, text, buttonText, altura, largura, onClick }) => (
   <div
     style={{
       textAlign: "center",
@@ -12,48 +13,60 @@ const Card = ({ imageSrc, text, buttonText, altura, largura }) => (
       boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
       display: "inline-block",
       margin: "0 10px",
-      backgroundColor: "white",
+      backgroundColor: "#4b4b4b",
+      color: "#ffffff",
     }}
   >
     <img
       src={imageSrc}
       alt="Card"
-      style={{ maxWidth: "100%", height: altura, width: largura }}
+      style={{ maxWidth: "100%", height: altura, width: largura}}
     />
-    <p>{text}</p>
-    <button className="btn btn-primary">{buttonText}</button>
+    <h5 className="my-3">{text}</h5>
+    <button className="btn custom-button" onClick={onClick}>{buttonText}</button>
   </div>
 );
 
 const PizzaCarousel = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalInfo, setModalInfo] = useState({ imageSrc: "", text: "", ingredients: ""});
+
+  const handleShowModal = (imageSrc, text, ingredients) => {
+    setModalInfo({ imageSrc, text, ingredients });
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => setShowModal(false);
+
   return (
     <div>
-      <h1 style={{ textAlign: "left" }} className="mt-3 ms-5">Nosso sabores</h1>
+      <h1 style={{ textAlign: "left", color:"white" }} className="mt-3 ms-5">Nosso sabores</h1>
       <Carousel slide={3} className="mt-3 mb-5">
-        {" "}
         <Carousel.Item>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            {" "}
             <Card
               imageSrc="/pizza-peperoni1.jpg"
               text="Pizza de peperoni"
               buttonText="Adicionar ao carrinho"
               altura="300px"
               largura="300px"
+              onClick={() => handleShowModal("/pizza-peperoni1.jpg", "Pizza de peperoni", "Mussarela, molho de tomate, peperoni, orégano")}
             />
             <Card
               imageSrc="https://via.placeholder.com/300"
-              text="tlgd"
+              text="Pizza Margherita"
               buttonText="Adicionar ao carrinho"
               altura="300px"
               largura="300px"
+              onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza Margherita" , "Mussarela, molho de tomate, peperoni, orégano")}
             />
             <Card
               imageSrc="https://via.placeholder.com/300"
-              text="tlgd"
+              text="Pizza Quatro Queijos"
               buttonText="Adicionar ao carrinho"
               altura="300px"
               largura="300px"
+              onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza Quatro Queijos" , "Mussarela, molho de tomate, peperoni, orégano")}
             />
           </div>
         </Carousel.Item>
@@ -61,28 +74,38 @@ const PizzaCarousel = () => {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Card
               imageSrc="https://via.placeholder.com/300"
-              text="Card 4"
+              text="Pizza Calabresa"
               buttonText="Adicionar ao carrinho"
               altura="300px"
               largura="300px"
+              onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza Calabresa" , "Mussarela, molho de tomate, peperoni, orégano")}
             />
             <Card
               imageSrc="https://via.placeholder.com/300"
-              text="Card 5"
+              text="Pizza Portuguesa"
               buttonText="Adicionar ao carrinho"
               altura="300px"
               largura="300px"
+              onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza Portuguesa" , "Mussarela, molho de tomate, peperoni, orégano")}
             />
             <Card
               imageSrc="https://via.placeholder.com/300"
-              text="Adicionar ao carrinho"
+              text="Pizza de Frango com Catupiry"
               buttonText="Adicionar ao carrinho"
               altura="300px"
               largura="300px"
+              onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza de Frango com Catupiry" , "Mussarela, molho de tomate, peperoni, orégano")}
             />
           </div>
         </Carousel.Item>
       </Carousel>
+
+      <PizzaModal
+        show={showModal}
+        handleClose={handleCloseModal}
+        imageSrc={modalInfo.imageSrc}
+        text={modalInfo.text}
+      />
     </div>
   );
 };
