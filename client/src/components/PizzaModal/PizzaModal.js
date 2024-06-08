@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import "../../css/custom-buttom.css";
 
 const PizzaModal = ({ show, handleClose, imageSrc, text, ingredients }) => (
-  <Modal show={show} onHide={handleClose} centered>
+  <Modal show={show} onHide={handleClose} centered style={{color:"white"}}>
     <Modal.Header closeButton className="modal-custom-bg">
       <Modal.Title>{text}</Modal.Title>
     </Modal.Header>

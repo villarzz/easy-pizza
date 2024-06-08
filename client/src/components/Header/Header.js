@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
 import React from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light navbar-red p-3">
-      <a className="navbar-brand" href="#">Easy pizza</a>
+      <a className="navbar-brand" href="#">Easy Pizza</a>
       <button
         className="navbar-toggler"
         type="button"
@@ -26,10 +26,12 @@ function Header() {
             <a className="nav-link" href="#">Menu</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Cupons</a>
+            <a className="nav-link" href="#">Fale Conosco</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Fale Conosco</a>
+            <a className="nav-link" href="#">
+              <i className="fas fa-shopping-cart"></i>
+            </a>
           </li>
         </ul>
       </div>
@@ -38,4 +40,3 @@ function Header() {
 }
 
 export default Header;
-;

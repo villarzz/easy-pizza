@@ -47,7 +47,7 @@ const PizzaCarousel = () => {
             <Card
               imageSrc="/pizza-peperoni1.jpg"
               text="Pizza de peperoni"
-              buttonText="Adicionar ao carrinho"
+              buttonText="Detalhes"
               altura="300px"
               largura="300px"
               onClick={() => handleShowModal("/pizza-peperoni1.jpg", "Pizza de peperoni", "Mussarela, molho de tomate, peperoni, orégano")}
@@ -55,7 +55,7 @@ const PizzaCarousel = () => {
             <Card
               imageSrc="https://via.placeholder.com/300"
               text="Pizza Margherita"
-              buttonText="Adicionar ao carrinho"
+              buttonText="Detalhes"
               altura="300px"
               largura="300px"
               onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza Margherita" , "Mussarela, molho de tomate, peperoni, orégano")}
@@ -63,7 +63,7 @@ const PizzaCarousel = () => {
             <Card
               imageSrc="https://via.placeholder.com/300"
               text="Pizza Quatro Queijos"
-              buttonText="Adicionar ao carrinho"
+              buttonText="Detalhes"
               altura="300px"
               largura="300px"
               onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza Quatro Queijos" , "Mussarela, molho de tomate, peperoni, orégano")}
@@ -75,7 +75,7 @@ const PizzaCarousel = () => {
             <Card
               imageSrc="https://via.placeholder.com/300"
               text="Pizza Calabresa"
-              buttonText="Adicionar ao carrinho"
+              buttonText="Detalhes"
               altura="300px"
               largura="300px"
               onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza Calabresa" , "Mussarela, molho de tomate, peperoni, orégano")}
@@ -83,7 +83,7 @@ const PizzaCarousel = () => {
             <Card
               imageSrc="https://via.placeholder.com/300"
               text="Pizza Portuguesa"
-              buttonText="Adicionar ao carrinho"
+              buttonText="Detalhes"
               altura="300px"
               largura="300px"
               onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza Portuguesa" , "Mussarela, molho de tomate, peperoni, orégano")}
@@ -91,7 +91,7 @@ const PizzaCarousel = () => {
             <Card
               imageSrc="https://via.placeholder.com/300"
               text="Pizza de Frango com Catupiry"
-              buttonText="Adicionar ao carrinho"
+              buttonText="Detalhes"
               altura="300px"
               largura="300px"
               onClick={() => handleShowModal("https://via.placeholder.com/300", "Pizza de Frango com Catupiry" , "Mussarela, molho de tomate, peperoni, orégano")}
