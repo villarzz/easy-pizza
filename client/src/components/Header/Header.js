@@ -1,8 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from "react";
+import CartModal from "../CartModal/CartModal";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-function Header() {
+function Header({ cartItems }) {
+  const [showCartModal, setShowCartModal] = useState(false);
+
+  const handleOpenCartModal = () => setShowCartModal(true);
+  const handleCloseCartModal = () => setShowCartModal(false);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light navbar-red p-3">
       <a className="navbar-brand" href="#">Easy Pizza</a>
@@ -29,12 +35,13 @@ function Header() {
             <a className="nav-link" href="#">Fale Conosco</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="#" onClick={handleOpenCartModal}>
               <i className="fas fa-shopping-cart"></i>
             </a>
           </li>
         </ul>
       </div>
+      <CartModal show={showCartModal} handleClose={handleCloseCartModal} cartItems={cartItems} />
     </nav>
   );
 }

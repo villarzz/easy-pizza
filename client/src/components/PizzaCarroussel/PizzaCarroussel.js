@@ -27,7 +27,7 @@ const Card = ({ imageSrc, text, buttonText, altura, largura, onClick }) => (
   </div>
 );
 
-const PizzaCarousel = () => {
+const PizzaCarousel = ({ onAddToCart }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalInfo, setModalInfo] = useState({ imageSrc: "", text: "", ingredients: ""});
 
@@ -105,6 +105,8 @@ const PizzaCarousel = () => {
         handleClose={handleCloseModal}
         imageSrc={modalInfo.imageSrc}
         text={modalInfo.text}
+        ingredients={modalInfo.ingredients}
+        handleAddToCart={onAddToCart}
       />
     </div>
   );
