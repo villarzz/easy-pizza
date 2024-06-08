@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import CartModal from "../CartModal/CartModal";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-function Header({ cartItems }) {
+function Header({ cartItems, handleShowReviewModal }) {
   const [showCartModal, setShowCartModal] = useState(false);
 
   const handleOpenCartModal = () => setShowCartModal(true);
@@ -41,7 +41,7 @@ function Header({ cartItems }) {
           </li>
         </ul>
       </div>
-      <CartModal show={showCartModal} handleClose={handleCloseCartModal} cartItems={cartItems} />
+      <CartModal show={showCartModal} handleClose={handleCloseCartModal} cartItems={cartItems} handleShowReviewModal={handleShowReviewModal} />
     </nav>
   );
 }
