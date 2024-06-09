@@ -30,11 +30,11 @@ const CartModal = ({ show, handleClose, cartItems, handleShowReviewModal }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
-      <Modal.Header closeButton>
+    <Modal show={show} onHide={handleClose} centered style={{color:'white'}}>
+      <Modal.Header closeButton className="modal-custom-bg">
         <Modal.Title>Carrinho</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="modal-custom-bg">
         {cartItems.length === 0 ? (
           <p>O carrinho está vazio</p>
         ) : (
@@ -68,7 +68,7 @@ const CartModal = ({ show, handleClose, cartItems, handleShowReviewModal }) => {
           </Form>
         )}
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer className="modal-custom-bg">
         <Button variant="secondary" onClick={handleClose}>
           Fechar
         </Button>
