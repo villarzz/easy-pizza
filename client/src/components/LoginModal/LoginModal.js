@@ -1,14 +1,21 @@
 import React, { useState } from "react";
+import Axios from "axios";
 import { Modal, Button, Form } from "react-bootstrap";
 
 const LoginModal = ({ show, handleClose }) => {
-  const [email, setEmail] = useState("");
-  const [name, setPassword] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [name, setName] = useState("");
+  const [endereco, setEndereco] = useState("");
 
   const handleLogin = () => {
     // Implement your login logic here
-    console.log("emial:", email);
-    console.log("nome:", name);
+    Axios.post("http://localhost:3001/usuario/registraUsuario", {
+      nome: name,
+      endereco: endereco,
+      telefone: telefone,
+    }).then((response) => {
+      console.log(response);
+    })
     handleClose();
   };
 
@@ -22,21 +29,30 @@ const LoginModal = ({ show, handleClose }) => {
         <h5>Para se cadastrar, preencha os campos abaixo:</h5>
         <p>OBS: não é necessário realizar o cadastro para realizar um pedido</p>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
             <Form.Label>Nome</Form.Label>
             <Form.Control
               type="text"
               placeholder="Nome"
               value={name}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Endereço</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Endereço"
+              value={endereco}
+              onChange={(e) => setEndereco(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Telefone</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Telefone"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
             />
           </Form.Group>
         </Form>
