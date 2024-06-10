@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pedidoController = require('../controllers/pedidoController');
+const pedidoController = require('../controller/pedidoController');
 
 router.post('/pedidos', pedidoController.criarPedido);
 router.get('/pedidos', pedidoController.listarPedidos);

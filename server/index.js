@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const itemPedidoRoutes = require('./backend/routes/itemPedidoRoutes'); 
-const usuarioRoutes = require('./backend/routes/usuarioRoutes');
-const pedidoRoutes = require('./backend/routes/pedidoRoutes'); 
-const feedbackRoutes = require('./backend/routes/feedbackRoutes');
+const itemPedidoRoutes = require('./routes/itemPedidoRoutes'); 
+const usuarioRoutes = require('./routes/usuarioRoutes');
+const pedidoRoutes = require('./routes/pedidoRoutes'); 
+const feedbackRoutes = require('./routes/feedbackRoutes');
 
 app.use(cors());
 app.use(express.json());
