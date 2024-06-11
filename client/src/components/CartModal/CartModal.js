@@ -26,17 +26,17 @@ const CartModal = ({ show, handleClose, cartItems, handleShowReviewModal }) => {
       endereco: address
     };
     console.log(order);
-    Axios.post("http://localhost:3001/pedido/pedidos", {
-      valorTotal: order.valorTotal,
-      nomeItem: order.itens[0],
-      endereco: order.endereco,
-    }).then((response) => {
-      alert('Pedido realizado com sucesso!')
-    })
     order.itens.forEach(item => {
+      Axios.post("http://localhost:3001/pedido/pedidos", {
+        valorTotal: order.valorTotal,
+        nomeItem: order.itens[0],
+        endereco: order.endereco,
+      }).then((response) => {
+        alert('Pedido realizado com sucesso!')
+      })
     });
-    // handleClose();
-    // handleShowReviewModal();
+    handleClose();
+    handleShowReviewModal();
   };
 
   const calculateTotal = () => {
