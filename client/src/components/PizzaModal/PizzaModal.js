@@ -2,14 +2,14 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import "../../css/custom-buttom.css";
 
-const PizzaModal = ({ show, handleClose, imageSrc, text, ingredients, handleAddToCart }) => {
+const PizzaModal = ({ show, handleClose, imageSrc, text, ingredients, price, handleAddToCart }) => {
   const handleAddAndClose = () => {
-    handleAddToCart({ imageSrc, text, ingredients });
+    handleAddToCart({ imageSrc, text, ingredients, price });
     handleClose();
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered style={{color:"white"}}>
+    <Modal show={show} onHide={handleClose} centered style={{ color: "white" }}>
       <Modal.Header closeButton className="modal-custom-bg">
         <Modal.Title>{text}</Modal.Title>
       </Modal.Header>
@@ -23,6 +23,7 @@ const PizzaModal = ({ show, handleClose, imageSrc, text, ingredients, handleAddT
         </div>
         <h4 style={{ textAlign: "center" }} className="my-3">{text}</h4>
         <p style={{ textAlign: "center" }}>Ingredientes: {ingredients}</p>
+        <h5 style={{ textAlign: "center" }}>Preço: {price}</h5>
       </Modal.Body>
       <Modal.Footer className="modal-custom-bg">
         <Button variant="secondary" onClick={handleClose}>

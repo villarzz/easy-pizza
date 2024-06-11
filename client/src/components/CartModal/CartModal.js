@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
@@ -20,17 +21,33 @@ const CartModal = ({ show, handleClose, cartItems, handleShowReviewModal }) => {
 
   const handleConfirmOrder = () => {
     const order = {
-      endereco: address,
-      metodoPagamento: paymentMethod,
-      itens: cartItems.map(item => item.text)
+      valorTotal: calculateTotal(),
+      itens: cartItems.map(item => item.text),
+      endereco: address
     };
     console.log(order);
-    handleClose();
-    handleShowReviewModal();
+    Axios.post("http://localhost:3001/pedido/pedidos", {
+      valorTotal: order.valorTotal,
+      nomeItem: order.itens[0],
+      endereco: order.endereco,
+    }).then((response) => {
+      alert('Pedido realizado com sucesso!')
+    })
+    order.itens.forEach(item => {
+    });
+    // handleClose();
+    // handleShowReviewModal();
+  };
+
+  const calculateTotal = () => {
+    return cartItems.reduce((total, item) => {
+      const price = parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+      return total + price;
+    }, 0).toFixed(2);
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered style={{color:'white'}}>
+    <Modal show={show} onHide={handleClose} centered style={{ color: 'white' }}>
       <Modal.Header closeButton className="modal-custom-bg">
         <Modal.Title>Carrinho</Modal.Title>
       </Modal.Header>
@@ -38,17 +55,23 @@ const CartModal = ({ show, handleClose, cartItems, handleShowReviewModal }) => {
         {cartItems.length === 0 ? (
           <p>O carrinho está vazio</p>
         ) : (
-          <ul>
-            {cartItems.map((item, index) => (
-              <li key={index}>
-                <div>
-                  <img src={item.imageSrc} alt={item.text} style={{ width: "50px", marginRight: "10px" }} />
-                  {item.text}
-                </div>
-                <p>Ingredientes: {item.ingredients}</p>
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul>
+              {cartItems.map((item, index) => (
+                <li key={index}>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <img src={item.imageSrc} alt={item.text} style={{ width: "50px", marginRight: "10px" }} />
+                    <div>
+                      <p>{item.text}</p>
+                      <p>Ingredientes: {item.ingredients}</p>
+                      <p>Preço: {item.price}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <h5>Total: R$ {calculateTotal()}</h5>
+          </>
         )}
         {isCheckout && (
           <Form>

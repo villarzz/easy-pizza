@@ -14,7 +14,7 @@ const LoginModal = ({ show, handleClose }) => {
       endereco: endereco,
       telefone: telefone,
     }).then((response) => {
-      console.log(response);
+      alert('Usuário cadastrado com sucesso!')
     })
     handleClose();
   };
