@@ -2,8 +2,17 @@ const db = require('../config/database');
 
 exports.registraUsuario = (nome, endereco, telefone, retorno) => {
     const SQL = "INSERT INTO usuario(nome, endereco, telefone) VALUES (?, ?, ?)";
-    db.query(SQL, [nome, endereco, telefone], retorno);
+    db.query(SQL, [nome, endereco, telefone], (err, result) => {
+        if (err) {
+            retorno(err, null);
+        } else {
+            console.log(result);
+            // result.insertId will contain the ID of the newly inserted row
+            retorno(null, result.insertId);
+        }
+    });
 };
+
 
 exports.getAllUsuario = (retorno) => {
     const SQL = "SELECT * FROM usuario";

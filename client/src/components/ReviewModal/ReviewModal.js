@@ -21,10 +21,10 @@ const ReviewModal = ({ show, handleClose }) => {
         <Modal.Title>Avalie sua experiência</Modal.Title>
       </Modal.Header>
       <Modal.Body style={{ textAlign: "center" }}>
-        <Button variant="light" onClick={() => handleReview(0)}>
+        <Button variant="light" onClick={() => handleReview(1)}>
           <i className="fas fa-thumbs-up" style={{ fontSize: "2rem", color: "green" }}></i>
         </Button>
-        <Button variant="light" onClick={() => handleReview(1)}>
+        <Button variant="light" onClick={() => handleReview(0)}>
           <i className="fas fa-thumbs-down" style={{ fontSize: "2rem", color: "red" }}></i>
         </Button>
       </Modal.Body>

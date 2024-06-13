@@ -2,15 +2,16 @@ const Usuario = require('../models/usuarioModel');
 
 exports.registraUsuario = (req, res) => {
     const { nome, endereco, telefone } = req.body;
-    Usuario.registraUsuario(nome, endereco, telefone, (err, result) => {
+    Usuario.registraUsuario(nome, endereco, telefone, (err, userId) => {
         if (err) {
             console.error(err);
             res.status(504).json({ error: "Erro ao registrar o usuário" });
         } else {
-            res.json({ message: "Usuário registrado" });
+            res.json({ userId: userId });
         }
     });
 };
+
 
 exports.getAllUsuario = (req, res) => {
     Usuario.getAllUsuario((err, result) => {
@@ -24,7 +25,7 @@ exports.getAllUsuario = (req, res) => {
 };
 
 exports.deletarUsuario = (req, res) => {
-    const usuarioId = req.params.id;
+    const usuarioId = req.params.id; // Obter o ID dos parâmetros de rota
 
     Usuario.deletarUsuario(usuarioId, (err, result) => {
         if (err) {
@@ -35,6 +36,8 @@ exports.deletarUsuario = (req, res) => {
         }
     });
 };
+
+
 
 exports.editarUsuario = (req, res) => {
     const usuarioId = req.params.id;
